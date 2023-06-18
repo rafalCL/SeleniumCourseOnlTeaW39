@@ -13,7 +13,8 @@ public class AssertionsExample {
         // when
 
         // then
-        assertTrue(true);
+//        fail();
+        assertTrue(true, "this will be displayed in log if this assertion fails");
         assertFalse(false);
         assertEquals(1, 1);
         assertEquals("ala", "ala");
