@@ -37,16 +37,19 @@ public class HotelRegisterUserTest {
         WebElement createAnAccountButton = driver.findElement(By.id("SubmitCreate"));
         createAnAccountButton.click();
 
-        //First Name
         WebElement firstNameInputBox  = driver.findElement(By.id("customer_firstname"));
+        Utils.assertVisibleAndEnabled(firstNameInputBox);
         firstNameInputBox.sendKeys("Ala");
 
         WebElement lastNameInputBox  = driver.findElement(By.id("customer_lastname"));
+        Utils.assertVisibleAndEnabled(lastNameInputBox);
         lastNameInputBox.sendKeys("Makota");
 
         WebElement customerEmailInputBox  = driver.findElement(By.id("email"));
+        Utils.assertVisibleAndEnabled(customerEmailInputBox);
 
         WebElement passwordInputBox  = driver.findElement(By.id("passwd"));
+        Utils.assertVisibleAndEnabled(passwordInputBox);
         passwordInputBox.sendKeys("haslo123");
 
         WebElement registerButton  = driver.findElement(By.id("submitAccount"));
