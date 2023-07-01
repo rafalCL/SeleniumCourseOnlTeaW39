@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class SearchWithDuckDuckGoPageObjectTest {
     private WebDriver driver;
     private DdgMainPage mainPage;
@@ -25,7 +27,12 @@ public class SearchWithDuckDuckGoPageObjectTest {
         mainPage.clickSearchButton();
         // then
         List<String> searchResults = resultsPage.getSearchResults();
-        System.out.println(searchResults.toString());
+        for (int i = 0; i < 3; i++) {
+            String resultLowerCase = searchResults.get(i).toLowerCase();
+            if(!resultLowerCase.contains(phrase)) {
+                fail(String.format("Phrase %s NOT found in result: %s", phrase, resultLowerCase));
+            }
+        }
     }
 
     @BeforeEach
