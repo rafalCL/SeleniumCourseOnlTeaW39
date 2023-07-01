@@ -38,20 +38,13 @@ public class HotelRegisterUserPageObjectTest {
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
         authenticationPage.provideEmailAndClickCreateAnAccount(Utils.randomEmail());
 
-        WebElement firstNameInputBox  = driver.findElement(By.id("customer_firstname"));
-        Utils.assertVisibleAndEnabled(firstNameInputBox);
-        firstNameInputBox.sendKeys("Ala");
+        UserData userData = new UserData()
+                .setFirstName("Ala")
+                .setLastName("Makota")
+                .setPassword("haslo123");
 
-        WebElement lastNameInputBox  = driver.findElement(By.id("customer_lastname"));
-        Utils.assertVisibleAndEnabled(lastNameInputBox);
-        lastNameInputBox.sendKeys("Makota");
-
-        WebElement customerEmailInputBox  = driver.findElement(By.id("email"));
-        Utils.assertVisibleAndEnabled(customerEmailInputBox);
-
-        WebElement passwordInputBox  = driver.findElement(By.id("passwd"));
-        Utils.assertVisibleAndEnabled(passwordInputBox);
-        passwordInputBox.sendKeys("haslo123");
+        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
+        createAnAccountPage.fillForm(userData);
 
         WebElement registerButton  = driver.findElement(By.id("submitAccount"));
         registerButton.click();
