@@ -10,16 +10,22 @@ import java.time.Duration;
 
 public class SearchWithDuckDuckGoPageObjectTest {
     private WebDriver driver;
+    private DdgMainPage mainPage;
 
     @Test
     public void searchPhraseWithDuckDuckGo() {
-        // todo implement test
+        driver.get("https://duckduckgo.com/");
+
+        final String phrase = "zielona papuga";
+
+        mainPage.enterSearchPhrase(phrase);
     }
 
     @BeforeEach
     public void beforeEach() {
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
+        this.mainPage = new DdgMainPage(driver);
     }
 
     @AfterEach
