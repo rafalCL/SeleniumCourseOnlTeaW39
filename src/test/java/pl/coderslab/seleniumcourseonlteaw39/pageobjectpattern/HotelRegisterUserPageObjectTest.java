@@ -35,11 +35,8 @@ public class HotelRegisterUserPageObjectTest {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickSignIn();
 
-        WebElement emailInputBox = driver.findElement(By.id("email_create"));
-        String randomEmail = Utils.randomEmail();
-        emailInputBox.sendKeys(randomEmail);
-        WebElement createAnAccountButton = driver.findElement(By.id("SubmitCreate"));
-        createAnAccountButton.click();
+        AuthenticationPage authenticationPage = new AuthenticationPage(driver);
+        authenticationPage.provideEmailAndClickCreateAnAccount(Utils.randomEmail());
 
         WebElement firstNameInputBox  = driver.findElement(By.id("customer_firstname"));
         Utils.assertVisibleAndEnabled(firstNameInputBox);
