@@ -1,15 +1,12 @@
 package pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern;
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.seleniumcourseonlteaw39.Utils;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Zadanie 1
@@ -49,9 +46,7 @@ public class HotelRegisterUserPageObjectTest {
         createAnAccountPage.clickRegister();
 
         // then
-        WebElement accountCreationSuccessfulPanel = driver.findElement(By.cssSelector("p.alert.alert-success"));
-        assertTrue(accountCreationSuccessfulPanel.isDisplayed());
-        String panelText = accountCreationSuccessfulPanel.getText();
-        assertEquals("Your account has been created.", panelText);
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        assertTrue(myAccountPage.isDisplayedAccountCreationSuccessPanel());
     }
 }
