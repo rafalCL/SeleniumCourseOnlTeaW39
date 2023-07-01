@@ -45,9 +45,8 @@ public class HotelRegisterUserPageObjectTest {
 
         CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
         createAnAccountPage.fillForm(userData);
+        createAnAccountPage.clickRegister();
 
-        WebElement registerButton  = driver.findElement(By.id("submitAccount"));
-        registerButton.click();
         // then
         WebElement accountCreationSuccessfulPanel = driver.findElement(By.cssSelector("p.alert.alert-success"));
         assertTrue(accountCreationSuccessfulPanel.isDisplayed());

@@ -28,4 +28,9 @@ public class CreateAnAccountPage {
         Utils.assertVisibleAndEnabled(passwordInputBox);
         passwordInputBox.sendKeys(userData.getPassword());
     }
+
+    public void clickRegister() {
+        WebElement registerButton  = driver.findElement(By.id("submitAccount"));
+        registerButton.click();
+    }
 }
