@@ -11,6 +11,7 @@ import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages.MyAccountPag
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Zadanie 1
@@ -37,15 +38,18 @@ public class HotelRegisterUserPageObjectTest {
         mainPage.clickSignIn();
 
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
-        authenticationPage.provideEmailAndClickCreateAnAccount(Utils.randomEmail());
+        final String randomEmail = Utils.randomEmail();
+        authenticationPage.provideEmailAndClickCreateAnAccount(randomEmail);
+
+        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
+        assertTrue(createAnAccountPage.areMandatoryFormFieldsVisibleAndEnabled());
+        assertEquals(randomEmail, createAnAccountPage.getEmail());
 
         UserData userData = new UserData()
                 .setFirstName("Ala")
                 .setLastName("Makota")
                 .setPassword("haslo123");
 
-        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
-        assertTrue(createAnAccountPage.areMandatoryFormFieldsVisibleAndEnabled());
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegister();
 

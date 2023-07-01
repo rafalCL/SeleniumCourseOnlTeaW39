@@ -20,9 +20,6 @@ public class CreateAnAccountPage {
         WebElement lastNameInputBox  = driver.findElement(By.id("customer_lastname"));
         lastNameInputBox.sendKeys(userData.getLastName());
 
-//        WebElement customerEmailInputBox  = driver.findElement(By.id("email"));
-//        Utils.assertVisibleAndEnabled(customerEmailInputBox);
-
         WebElement passwordInputBox  = driver.findElement(By.id("passwd"));
         passwordInputBox.sendKeys(userData.getPassword());
     }
@@ -40,5 +37,10 @@ public class CreateAnAccountPage {
         return Utils.isDisplayedAndEnabled(firstNameInputBox) &&
             Utils.isDisplayedAndEnabled(lastNameInputBox) &&
             Utils.isDisplayedAndEnabled(passwordInputBox);
+    }
+
+    public String getEmail() {
+        WebElement customerEmailInputBox  = driver.findElement(By.id("email"));
+        return customerEmailInputBox.getAttribute("value");
     }
 }
