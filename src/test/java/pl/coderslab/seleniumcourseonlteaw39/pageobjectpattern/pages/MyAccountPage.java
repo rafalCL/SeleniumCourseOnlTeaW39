@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage {
     @FindBy(css = "p.alert.alert-success")
-    WebElement accountCreationSuccessfulPanel;
+    private WebElement accountCreationSuccessfulPanel;
 
     public MyAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);

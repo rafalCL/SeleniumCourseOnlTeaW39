@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AuthenticationPage {
     @FindBy(id = "email_create")
-    WebElement emailInputBox;
+    private WebElement emailInputBox;
     @FindBy(id = "SubmitCreate")
-    WebElement createAnAccountButton;
+    private WebElement createAnAccountButton;
 
     public AuthenticationPage(WebDriver driver) {
         PageFactory.initElements(driver, this);

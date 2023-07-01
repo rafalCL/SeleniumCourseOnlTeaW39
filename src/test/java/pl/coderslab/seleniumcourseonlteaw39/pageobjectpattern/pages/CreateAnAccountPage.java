@@ -9,17 +9,17 @@ import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.UserData;
 
 public class CreateAnAccountPage {
     @FindBy(id = "customer_firstname")
-    WebElement firstNameInputBox;
+    private WebElement firstNameInputBox;
     @FindBy(id = "customer_lastname")
-    WebElement lastNameInputBox;
+    private WebElement lastNameInputBox;
     @FindBy(id = "email")
-    WebElement customerEmailInputBox;
+    private WebElement customerEmailInputBox;
     @FindBy(id = "passwd")
-    WebElement passwordInputBox;
+    private WebElement passwordInputBox;
     @FindBy(id = "newsletter")
-    WebElement newsletterCheckbox;
+    private WebElement newsletterCheckbox;
     @FindBy(id = "submitAccount")
-    WebElement registerButton;
+    private WebElement registerButton;
 
     public CreateAnAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
