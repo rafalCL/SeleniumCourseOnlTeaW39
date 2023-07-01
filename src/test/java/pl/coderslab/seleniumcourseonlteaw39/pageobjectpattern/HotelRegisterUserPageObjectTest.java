@@ -1,5 +1,7 @@
 package pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,21 +29,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //Potwierdź rejestrację nowego użytkownika (wcześniej sprawdzając, czy przycisk jest widoczny).
 
 public class HotelRegisterUserPageObjectTest {
+    private WebDriver driver;
+    private MainPage mainPage;
+    private AuthenticationPage authenticationPage;
+    private CreateAnAccountPage createAnAccountPage;
+    private MyAccountPage myAccountPage;
+
     @Test
-    public void selectAndFillElements() {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
+    public void shouldCreateUserAccount() {
         // given
         driver.get("https://hotel-testlab.coderslab.pl/en/");
         // when
-        MainPage mainPage = new MainPage(driver);
         mainPage.clickSignIn();
 
-        AuthenticationPage authenticationPage = new AuthenticationPage(driver);
         final String randomEmail = Utils.randomEmail();
         authenticationPage.provideEmailAndClickCreateAnAccount(randomEmail);
 
-        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
         assertTrue(createAnAccountPage.areMandatoryFormFieldsVisibleAndEnabled());
         assertEquals(randomEmail, createAnAccountPage.getEmail());
 
@@ -55,7 +58,21 @@ public class HotelRegisterUserPageObjectTest {
         createAnAccountPage.clickRegister();
 
         // then
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
         assertTrue(myAccountPage.isDisplayedAccountCreationSuccessPanel());
+    }
+
+    @BeforeEach
+    public void beforeEach() {
+        this.driver = new ChromeDriver();
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
+        this.mainPage = new MainPage(driver);
+        this.authenticationPage = new AuthenticationPage(driver);
+        this.createAnAccountPage = new CreateAnAccountPage(driver);
+        this.myAccountPage = new MyAccountPage(driver);
+    }
+
+    @AfterEach
+    public void afterEach() {
+//        driver.quit();
     }
 }
