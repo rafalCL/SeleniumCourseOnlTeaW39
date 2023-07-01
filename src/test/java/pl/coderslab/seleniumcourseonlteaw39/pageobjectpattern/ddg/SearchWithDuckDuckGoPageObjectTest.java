@@ -16,9 +16,10 @@ public class SearchWithDuckDuckGoPageObjectTest {
     public void searchPhraseWithDuckDuckGo() {
         driver.get("https://duckduckgo.com/");
 
-        final String phrase = "zielona papuga";
+        final String phrase = "faraon";
 
         mainPage.enterSearchPhrase(phrase);
+        mainPage.clickSearchButton();
     }
 
     @BeforeEach
