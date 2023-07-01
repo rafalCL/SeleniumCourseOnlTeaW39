@@ -49,7 +49,7 @@ public class HotelRegisterUserPageObjectTest {
                 .setFirstName("Ala")
                 .setLastName("Makota")
                 .setPassword("haslo123")
-                .setSignUpForNewsletter(false);
+                .setSignUpForNewsletter(true);
 
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegister();
