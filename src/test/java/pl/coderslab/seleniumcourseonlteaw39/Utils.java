@@ -19,4 +19,11 @@ public class Utils {
     public static boolean isDisplayedAndEnabled(WebElement elementToTest) {
         return elementToTest.isDisplayed() && elementToTest.isEnabled();
     }
+
+    public static void setCheckbox(WebElement checkbox, boolean isChecked) {
+        if((checkbox.getAttribute("checked") == null && isChecked) ||
+            (checkbox.getAttribute("checked") != null && !isChecked)) {
+            checkbox.click();
+        }
+    }
 }

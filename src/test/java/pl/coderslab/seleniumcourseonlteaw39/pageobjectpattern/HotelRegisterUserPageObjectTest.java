@@ -48,7 +48,8 @@ public class HotelRegisterUserPageObjectTest {
         UserData userData = new UserData()
                 .setFirstName("Ala")
                 .setLastName("Makota")
-                .setPassword("haslo123");
+                .setPassword("haslo123")
+                .setSignUpForNewsletter(false);
 
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegister();

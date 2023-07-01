@@ -22,6 +22,9 @@ public class CreateAnAccountPage {
 
         WebElement passwordInputBox  = driver.findElement(By.id("passwd"));
         passwordInputBox.sendKeys(userData.getPassword());
+
+        WebElement newsletterCheckbox  = driver.findElement(By.id("newsletter"));
+        Utils.setCheckbox(newsletterCheckbox, userData.isSignUpForNewsletter());
     }
 
     public void clickRegister() {

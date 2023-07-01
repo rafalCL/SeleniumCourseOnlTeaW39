@@ -4,6 +4,7 @@ public class UserData {
     private String firstName;
     private String lastName;
     private String password;
+    private boolean isSignUpForNewsletter;
 
 // builder pattern / wzorzec budowniczego
 
@@ -32,5 +33,14 @@ public class UserData {
     public UserData setPassword(String password) {
         this.password = password;
         return this;
+    }
+
+    public UserData setSignUpForNewsletter(boolean isSignUpForNewsletter) {
+        this.isSignUpForNewsletter = isSignUpForNewsletter;
+        return this;
+    }
+
+    public boolean isSignUpForNewsletter() {
+        return isSignUpForNewsletter;
     }
 }
