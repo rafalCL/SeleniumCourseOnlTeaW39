@@ -32,8 +32,8 @@ public class HotelRegisterUserPageObjectTest {
         // given
         driver.get("https://hotel-testlab.coderslab.pl/en/");
         // when
-        WebElement signInButton = driver.findElement(By.cssSelector("a.user_login.navigation-link"));
-        signInButton.click();
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickSignIn();
 
         WebElement emailInputBox = driver.findElement(By.id("email_create"));
         String randomEmail = Utils.randomEmail();
