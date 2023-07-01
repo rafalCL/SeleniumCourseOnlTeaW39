@@ -15,4 +15,8 @@ public class Utils {
             Assertions.fail("element NOT displayed OR NOT enabled");
         }
     }
+
+    public static boolean isDisplayedAndEnabled(WebElement elementToTest) {
+        return elementToTest.isDisplayed() && elementToTest.isEnabled();
+    }
 }

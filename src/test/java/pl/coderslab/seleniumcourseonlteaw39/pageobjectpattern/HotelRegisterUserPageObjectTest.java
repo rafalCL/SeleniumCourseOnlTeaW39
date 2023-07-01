@@ -44,6 +44,7 @@ public class HotelRegisterUserPageObjectTest {
                 .setPassword("haslo123");
 
         CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
+        assertTrue(createAnAccountPage.areMandatoryFormFieldsVisibleAndEnabled());
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegister();
 
