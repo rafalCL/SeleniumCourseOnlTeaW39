@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.seleniumcourseonlteaw39.Utils;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages.AuthenticationPage;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages.CreateAnAccountPage;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages.MainPage;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages.MyAccountPage;
 
 import java.time.Duration;
 

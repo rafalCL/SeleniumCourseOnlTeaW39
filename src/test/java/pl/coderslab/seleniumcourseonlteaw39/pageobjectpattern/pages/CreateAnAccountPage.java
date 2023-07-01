@@ -1,9 +1,10 @@
-package pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern;
+package pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.coderslab.seleniumcourseonlteaw39.Utils;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.UserData;
 
 public class CreateAnAccountPage {
     private final WebDriver driver;
