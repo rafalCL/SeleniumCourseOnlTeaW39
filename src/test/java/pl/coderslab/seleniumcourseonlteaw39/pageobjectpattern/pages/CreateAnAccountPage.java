@@ -1,49 +1,48 @@
 package pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import pl.coderslab.seleniumcourseonlteaw39.Utils;
 import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.UserData;
 
 public class CreateAnAccountPage {
-    private final WebDriver driver;
+    @FindBy(id = "customer_firstname")
+    WebElement firstNameInputBox;
+    @FindBy(id = "customer_lastname")
+    WebElement lastNameInputBox;
+    @FindBy(id = "email")
+    WebElement customerEmailInputBox;
+    @FindBy(id = "passwd")
+    WebElement passwordInputBox;
+    @FindBy(id = "newsletter")
+    WebElement newsletterCheckbox;
+    @FindBy(id = "submitAccount")
+    WebElement registerButton;
 
     public CreateAnAccountPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void fillForm(UserData userData) {
-        WebElement firstNameInputBox  = driver.findElement(By.id("customer_firstname"));
         firstNameInputBox.sendKeys(userData.getFirstName());
-
-        WebElement lastNameInputBox  = driver.findElement(By.id("customer_lastname"));
         lastNameInputBox.sendKeys(userData.getLastName());
-
-        WebElement passwordInputBox  = driver.findElement(By.id("passwd"));
         passwordInputBox.sendKeys(userData.getPassword());
-
-        WebElement newsletterCheckbox  = driver.findElement(By.id("newsletter"));
         Utils.setCheckbox(newsletterCheckbox, userData.isSignUpForNewsletter());
     }
 
     public void clickRegister() {
-        WebElement registerButton  = driver.findElement(By.id("submitAccount"));
         registerButton.click();
     }
 
     public boolean areMandatoryFormFieldsVisibleAndEnabled() {
-        WebElement firstNameInputBox = driver.findElement(By.id("customer_firstname"));
-        WebElement lastNameInputBox = driver.findElement(By.id("customer_lastname"));
-        WebElement passwordInputBox = driver.findElement(By.id("passwd"));
-
         return Utils.isDisplayedAndEnabled(firstNameInputBox) &&
             Utils.isDisplayedAndEnabled(lastNameInputBox) &&
             Utils.isDisplayedAndEnabled(passwordInputBox);
     }
 
     public String getEmail() {
-        WebElement customerEmailInputBox  = driver.findElement(By.id("email"));
         return customerEmailInputBox.getAttribute("value");
     }
 }
