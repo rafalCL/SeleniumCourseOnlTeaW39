@@ -1,5 +1,6 @@
 package pl.coderslab.seleniumcourseonlteaw39.cucumber;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -27,7 +28,11 @@ public class SearchWithDuckDuckGoCucumberSteps {
         // when
         mainPage.enterSearchPhrase(phrase);
     }
-    //And Search button clicked
+
+    @And("Search button clicked")
+    public void clickSearchButton() {
+        mainPage.clickSearchButton();
+    }
     //Then First 3 results contain phrase 'Faraon'
 
     //     @Test
