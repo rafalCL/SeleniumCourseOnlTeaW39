@@ -19,14 +19,14 @@ public class SearchWithDuckDuckGoCucumberSteps {
     private DdgMainPage mainPage;
     private DdgSearchResultsPage resultsPage;
 
-    @Given("https:\\/\\/duckduckgo.com\\/ opened in web browser")
-    public void openInBrowser() {
+    @Given("^([^ ]+) opened in web browser$")
+    public void openInBrowser(String url) {
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
         this.mainPage = new DdgMainPage(driver);
         this.resultsPage = new DdgSearchResultsPage(driver);
 
-        driver.get("https://duckduckgo.com/");
+        driver.get(url);
     }
 
     @When("Phrase 'Faraon' entered in search input box")
