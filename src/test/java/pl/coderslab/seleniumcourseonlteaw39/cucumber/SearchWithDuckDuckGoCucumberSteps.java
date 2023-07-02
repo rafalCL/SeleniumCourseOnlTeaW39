@@ -1,22 +1,32 @@
 package pl.coderslab.seleniumcourseonlteaw39.cucumber;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.coderslab.seleniumcourseonlteaw39.pageobjectpattern.ddg.DdgMainPage;
 
 import java.time.Duration;
 
 public class SearchWithDuckDuckGoCucumberSteps {
     private WebDriver driver;
+    private DdgMainPage mainPage;
 
     @Given("https:\\/\\/duckduckgo.com\\/ opened in web browser")
     public void openInBrowser() {
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8));
+        this.mainPage = new DdgMainPage(driver);
+
         driver.get("https://duckduckgo.com/");
     }
 
-    //When Phrase 'Faraon' entered in search input box
+    @When("Phrase 'Faraon' entered in search input box")
+    public void searchPhraseEnteredInSearchInput() {
+        final String phrase = "faraon";
+        // when
+        mainPage.enterSearchPhrase(phrase);
+    }
     //And Search button clicked
     //Then First 3 results contain phrase 'Faraon'
 
