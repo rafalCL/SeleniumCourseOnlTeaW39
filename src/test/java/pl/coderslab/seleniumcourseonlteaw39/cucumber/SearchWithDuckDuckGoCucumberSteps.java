@@ -29,9 +29,8 @@ public class SearchWithDuckDuckGoCucumberSteps {
         driver.get(url);
     }
 
-    @When("Phrase 'Faraon' entered in search input box")
-    public void searchPhraseEnteredInSearchInput() {
-        final String phrase = "faraon";
+    @When("Phrase {string} entered in search input box")
+    public void searchPhraseEnteredInSearchInput(String phrase) {
         // when
         mainPage.enterSearchPhrase(phrase);
     }
@@ -41,13 +40,13 @@ public class SearchWithDuckDuckGoCucumberSteps {
         mainPage.clickSearchButton();
     }
 
-    @Then("First 3 results contain phrase 'Faraon'")
-    public void checkSearchResults() {
-        String phrase = "faraon";
+    @Then("First {int} results contain phrase {string}")
+    public void checkSearchResults(int count, String phrase) {
+        String phraseLowerCase = phrase.toLowerCase();
         List<String> searchResults = resultsPage.getSearchResults();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < count; i++) {
             String resultLowerCase = searchResults.get(i).toLowerCase();
-            if(!resultLowerCase.contains(phrase)) {
+            if(!resultLowerCase.contains(phraseLowerCase)) {
                 fail(String.format("Phrase %s NOT found in result: %s", phrase, resultLowerCase));
             }
         }
