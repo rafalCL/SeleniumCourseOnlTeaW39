@@ -4,6 +4,8 @@ Given https://duckduckgo.com/ opened in web browser
 When Phrase '<searchPhrase>' entered in search input box
 And Search button clicked
 Then First <count> results contain phrase '<searchPhrase>'
+And Save screenshot
+And Quit driver
 
   Examples:
   |searchPhrase          |count |
