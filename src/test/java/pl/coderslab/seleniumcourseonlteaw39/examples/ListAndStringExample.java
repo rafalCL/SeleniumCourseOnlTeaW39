@@ -18,4 +18,14 @@ public class ListAndStringExample {
         integers.add(17);
         System.out.println(integers.size()); // 2
     }
+
+    static void myEasyList() {
+        List<Integer> integers = new ArrayList<>();
+        List<String> strings = new ArrayList<>();
+        strings.add("ala");
+        strings.add("ma");
+        strings.add("kota");
+        System.out.println(strings.get(0));
+        System.out.println(strings.get(1));
+    }
 }
